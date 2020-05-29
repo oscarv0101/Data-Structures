@@ -9,6 +9,12 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys 
+sys.path.append("./stack")
+sys.path.append("./queue")
+from queue import Queue
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -16,21 +22,48 @@ class BSTNode:
         self.right = None
 
     # Insert the given value into the tree
-    def insert(self, value):
-        pass
+        def insert(self, value):  
+            if value >= self.value:
+                if self.right==None:
+                    self.right=BSTNode(value) 
+                else:
+                    return self.right.insert(value)
+            elif value < self.value:
+                if self.left==None:            
+                    self.left=BSTNode(value)
+                else:
+                    return self.left.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
-    def contains(self, target):
-        pass
+    
+        def contains(self, target):
+            if target==self.value:
+                return True
+            elif target>self.value:
+                if self.right!=None:
+                    return self.right.contains(target)
+            elif target<self.value:
+                if self.left!=None:
+                    return self.left.contains(target)
+            else:
+                return False
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if self.right==None:
+            return self.value
+        return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.left!=None and self.right!=None:
+            return (self.left.for_each(fn),self.right.for_each(fn))
+        if self.left!=None and self.right==None:
+            return self.left.for_each(cb)
+        if self.left==None and self.right!=None:
+            return self.right.for_each(cb)
 
     # Part 2 -----------------------
 

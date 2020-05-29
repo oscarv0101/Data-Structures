@@ -10,7 +10,9 @@ class ListNode:
     after this node. Note that this node could already
     have a next node it is point to."""
     def insert_after(self, value):
-        current_next = self.next
+        #the current next section of a node is set to self.next which is None
+        current_next = self.next 
+        #now changing self.next to be a new ListNode 
         self.next = ListNode(value, self, current_next)
         if current_next:
             current_next.prev = self.next
@@ -32,6 +34,12 @@ class ListNode:
         if self.next:
             self.next.prev = self.prev
 
+# my_node = ListNode(12)
+# my_node.insert_after(25)
+
+# my_node.value
+# my_node.prev
+# my_node.next
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
