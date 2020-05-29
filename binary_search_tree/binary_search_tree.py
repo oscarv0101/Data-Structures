@@ -61,9 +61,9 @@ class BSTNode:
         if self.left!=None and self.right!=None:
             return (self.left.for_each(fn),self.right.for_each(fn))
         if self.left!=None and self.right==None:
-            return self.left.for_each(cb)
+            return self.left.for_each(fn)
         if self.left==None and self.right!=None:
-            return self.right.for_each(cb)
+            return self.right.for_each(fn)
 
     # Part 2 -----------------------
 
